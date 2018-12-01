@@ -30,7 +30,7 @@ import java.util.Scanner;
  * <br>
  * also freely available at
  * <a href="https://www.udemy.com/java-multithreading/?couponCode=FREE">
- *     <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
+ * <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
  * </a>
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
@@ -44,11 +44,13 @@ public class Processor {
      * two code blocks by specification, functionally identical.
      */
 
+//    private final Object padlock = new Object(); // może też być synchronizowane tym ale wtedy uwaga na wait i notify
 
     public void produce() throws InterruptedException {
         synchronized (this) {
             System.out.println("Producer thread running ....");
-            wait();//this.wait() is fine.
+            wait(); //this.wait();
+//            padlock.wait();
             System.out.println("Resumed.");
         }
     }
@@ -60,8 +62,9 @@ public class Processor {
             System.out.println("Waiting for return key.");
             scanner.nextLine();
             System.out.println("Return key pressed.");
-            notify();
-            Thread.sleep(5000);
+            notify(); // this.notify();
+//            padlock.notify();
+            Thread.sleep(2000);
             System.out.println("Consumption done.");
         }
     }

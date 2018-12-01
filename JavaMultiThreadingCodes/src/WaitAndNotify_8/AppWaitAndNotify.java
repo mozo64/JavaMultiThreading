@@ -19,7 +19,7 @@ package WaitAndNotify_8;
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
  */
-public class App {
+public class AppWaitAndNotify {
 
     public static void main(String[] args) throws InterruptedException {
         final Processor processor = new Processor();

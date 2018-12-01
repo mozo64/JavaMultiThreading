@@ -20,7 +20,7 @@ package LowLevelProducerConsumer_9;
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
  */
-public class App {
+public class AppLowLevelProducerConsumer {
 
     public static void main(String[] args) throws InterruptedException {
         final Processor processor = new Processor();
