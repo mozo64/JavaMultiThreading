@@ -10,7 +10,7 @@ package StartingThreads_1;
  * <br>
  * also freely available at
  * <a href="https://www.udemy.com/java-multithreading/?couponCode=FREE">
- *     <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
+ * <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
  * </a>
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
@@ -19,7 +19,7 @@ class Runner extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println("Hello: " + i + " Thread: " + Thread.currentThread().getName());
             try {
                 Thread.sleep(100);
@@ -32,12 +32,16 @@ class Runner extends Thread {
 
 public class ApplicationExtends {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Runner runner1 = new Runner();
         runner1.start();
 
         Runner runner2 = new Runner();
         runner2.start();
+
+        Thread.sleep(200);
+        runner1.stop();
+
     }
 
 }
