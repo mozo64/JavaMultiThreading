@@ -48,18 +48,18 @@ class Processor implements Runnable {
         System.out.println("Started.");
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(300);
         } catch (InterruptedException ignored) {}
         latch.countDown();
     }
 }
 
-public class App {
+public class AppCountDownLatch {
 
     public static void main(String[] args) {
-        CountDownLatch latch = new CountDownLatch(3);
-        ExecutorService executor = Executors.newFixedThreadPool(3);
-        for (int i = 0; i < 3; i++) {
+        CountDownLatch latch = new CountDownLatch(5);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        for (int i = 0; i < 10; i++) {
             executor.submit(new Processor(latch));
         }
         executor.shutdown();

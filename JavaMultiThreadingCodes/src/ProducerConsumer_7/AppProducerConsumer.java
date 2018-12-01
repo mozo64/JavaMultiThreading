@@ -15,17 +15,18 @@ package ProducerConsumer_7;
  * <br>
  * also freely available at
  * <a href="https://www.udemy.com/java-multithreading/?couponCode=FREE">
- *     <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
+ * <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
  * </a>
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
  */
+
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 @SuppressWarnings("InfiniteLoopStatement")
-public class App {
+public class AppProducerConsumer {
 
     /**
      * Thread safe implementation of {@link java.util.Queue} data structure so
@@ -48,7 +49,8 @@ public class App {
             public void run() {
                 try {
                     producer();
-                } catch (InterruptedException ignored) {}
+                } catch (InterruptedException ignored) {
+                }
             }
         });
 
@@ -56,7 +58,8 @@ public class App {
             public void run() {
                 try {
                     consumer();
-                } catch (InterruptedException ignored) {}
+                } catch (InterruptedException ignored) {
+                }
             }
         });
         t1.start();
@@ -73,6 +76,7 @@ public class App {
     private static void producer() throws InterruptedException {
         Random random = new Random();
         while (true) {//loop indefinitely
+            Thread.sleep(random.nextInt(210));
             queue.put(random.nextInt(100));//if queue is full (10) waits
         }
     }
@@ -80,11 +84,9 @@ public class App {
     private static void consumer() throws InterruptedException {
         Random random = new Random();
         while (true) {
-            Thread.sleep(100);
-            if (random.nextInt(10) == 0) {
+            Thread.sleep(random.nextInt(200));
                 Integer value = queue.take();//if queue is empty waits
                 System.out.println("Taken value: " + value + "; Queue size is: " + queue.size());
             }
         }
     }
-}
