@@ -16,6 +16,8 @@ package VolatileKeyword_2;
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
  */
+
+import java.io.IOException;
 import java.util.Scanner;
 
 class Processor extends Thread {
@@ -27,26 +29,30 @@ class Processor extends Thread {
             System.out.println("Running");
 
             try {
-                Thread.sleep(50);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void shutdown() {
+    void shutdown() {
         running = false;
     }
 }
 
 public class AppVolatile {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Processor pro = new Processor();
         pro.start();
+
         // Wait for the enter key
         System.out.println("Enter something to stop the thread,\nVolatile variable running will be forced to true :");
         new Scanner(System.in).nextLine();
+        // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // final String s = br.readLine();
+
         pro.shutdown();
     }
 }
