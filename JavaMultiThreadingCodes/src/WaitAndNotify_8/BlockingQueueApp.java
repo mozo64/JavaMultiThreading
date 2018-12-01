@@ -51,7 +51,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Z.B. Celik <celik.berkay@gmail.com>
  */
 //For the other version of the implementation please check
-// LowLevelProducerConsumer_9.App
+// LowLevelProducerConsumer_9.AppVolatile
 class BlockingQueue<T> {
 
     private Queue<T> queue = new LinkedList<>();

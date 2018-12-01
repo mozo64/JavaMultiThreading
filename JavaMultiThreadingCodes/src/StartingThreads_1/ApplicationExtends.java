@@ -20,7 +20,7 @@ class Runner extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
-            System.out.println("Hello: " + i + " Thread: " + Thread.currentThread().getName());
+            System.out.println(this.getClass().getName() + " - Hello: " + i + " Thread: " + Thread.currentThread().getName());
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -33,6 +33,8 @@ class Runner extends Thread {
 public class ApplicationExtends {
 
     public static void main(String[] args) throws InterruptedException {
+        System.out.println(ApplicationExtends.class.getName());
+
         Runner runner1 = new Runner();
         runner1.start();
 

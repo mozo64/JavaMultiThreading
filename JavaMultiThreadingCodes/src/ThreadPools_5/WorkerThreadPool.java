@@ -84,7 +84,7 @@ public class WorkerThreadPool {
             // Source:http://stackoverflow.com/questions/1250643/how-to-wait-for-all-threads-to-finish-using-executorservice
             // For a perpetually running batch kind of thing u need to submit jobs and wait for them to
             // finish before jumping ahead.
-            // In Such a case a latch or a barrier makes more sense than a shutdown (see CountDownLatch_6.App).
+            // In Such a case a latch or a barrier makes more sense than a shutdown (see CountDownLatch_6.AppVolatile).
         } catch (InterruptedException ex) {
             System.out.println(ex.getMessage());
         }

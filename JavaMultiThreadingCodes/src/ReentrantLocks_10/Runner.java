@@ -22,7 +22,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * {@link java.util.concurrent.locks.ReentrantLock}:
  * This is the most widely used implementation class of Lock
  * interface. This class implements the Lock interface in similar way as
- * synchronized keyword. (see App.java for more)
+ * synchronized keyword. (see AppVolatile.java for more)
  * <p>
  * {@link java.util.concurrent.locks.Condition}:
  * Condition objects are similar to Object wait-notify model with

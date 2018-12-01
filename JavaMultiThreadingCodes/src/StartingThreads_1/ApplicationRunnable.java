@@ -19,8 +19,8 @@ class RunnerRunnable implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Hello: " + i + " Thread: " + Thread.currentThread().getName());
+        for (int i = 0; i < 10; i++) {
+            System.out.println(this.getClass().getName() + " - Hello: " + i + " Thread: " + Thread.currentThread().getName());
 
             try {
                 Thread.sleep(100);
@@ -33,11 +33,17 @@ class RunnerRunnable implements Runnable {
 
 public class ApplicationRunnable {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println(ApplicationRunnable.class.getName());
+
         Thread thread1 = new Thread(new RunnerRunnable());
         Thread thread2 = new Thread(new RunnerRunnable());
         thread1.start();
         thread2.start();
+
+        Thread.sleep(200);
+        thread1.stop();
+
     }
 
 }

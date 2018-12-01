@@ -21,8 +21,8 @@ public class ApplicationAnonymous {
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 5; i++) {
-                    System.out.println("Hello: " + i + " Thread: " + Thread.currentThread().getName());
+                for (int i = 0; i < 10; i++) {
+                    System.out.println(this.getClass().getName() + " - Hello: " + i + " Thread: " + Thread.currentThread().getName());
 
                     try {
                         Thread.sleep(100);
