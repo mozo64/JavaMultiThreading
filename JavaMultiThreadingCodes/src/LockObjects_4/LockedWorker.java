@@ -23,12 +23,15 @@ import java.util.Random;
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
  */
-public class Worker {
+public class LockedWorker {
 
     private Random random = new Random();
 
     private final Object lock1 = new Object();
+//    private final StringBuffer lock1 = new StringBuffer();
     private final Object lock2 = new Object();
+//    private final Object lock2 = new Integer(1);
+//    private  Object lock2 = new Object();
 
     private List<Integer> list1 = new ArrayList<>();
     private List<Integer> list2 = new ArrayList<>();
@@ -56,12 +59,13 @@ public class Worker {
             }
             list2.add(random.nextInt(100));
         }
-
     }
 
     public void process() {
         for (int i = 0; i < 1000; i++) {
             stageOne();
+//            lock2 = new Object();
+//            lock2 = lock1;
             stageTwo();
         }
     }

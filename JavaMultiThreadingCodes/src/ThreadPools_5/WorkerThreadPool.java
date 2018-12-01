@@ -1,5 +1,7 @@
 package ThreadPools_5;
 
+import LockObjects_4.LockedWorker;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,7 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * This is the implementation of {@link LockObjects_4.Worker} with threadPool
+ * This is the implementation of {@link LockedWorker} with threadPool
  * <br><br>
  * Codes with minor comments are from
  * <a href="http://www.caveofprogramming.com/youtube/">
