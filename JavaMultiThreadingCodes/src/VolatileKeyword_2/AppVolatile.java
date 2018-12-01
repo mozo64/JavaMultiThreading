@@ -36,7 +36,7 @@ class Processor extends Thread {
         }
     }
 
-    void shutdown() {
+    public void shutdown() {
         running = false;
     }
 }
