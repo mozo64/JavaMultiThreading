@@ -49,7 +49,7 @@ public class AppLowLevelProducerConsumer {
 
         // Pause for 30 seconds and force quitting the app (because we're
         // looping infinitely)
-        Thread.sleep(30000);
-        System.exit(0);
+//        Thread.sleep(30000);
+//        System.exit(0);
     }
 }

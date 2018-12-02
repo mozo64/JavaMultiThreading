@@ -48,7 +48,7 @@ public class Processor {
                     lock.wait();
                 }
 
-                int value = list.removeFirst();
+                int value = list.removeFirst(); // FIFO
                 System.out.print("Removed value by consumer is: " + value);
                 System.out.println(" Now list size is: " + list.size());
                 lock.notify();
