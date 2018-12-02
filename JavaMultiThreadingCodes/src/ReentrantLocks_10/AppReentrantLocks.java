@@ -66,7 +66,7 @@ package ReentrantLocks_10;
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
  */
-public class App {
+public class AppReentrantLocks {
 
     public static void main(String[] args) throws Exception {
         final Runner runner = new Runner();
