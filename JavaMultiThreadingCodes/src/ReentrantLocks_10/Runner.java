@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * Source:<em>
  * http://www.journaldev.com/2377/java-lock-example-and-concurrency-lock-vs-synchronized</em>
@@ -42,7 +43,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * <br>
  * also freely available at
  * <a href="https://www.udemy.com/java-multithreading/?couponCode=FREE">
- *     <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
+ * <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
  * </a>
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
@@ -53,35 +54,47 @@ public class Runner {
     private Lock lock = new ReentrantLock();
     private Condition cond = lock.newCondition();
 
-    private void increment() {
-        for (int i = 0; i < 10000; i++) {
+    private void increment() throws InterruptedException {
+        for (int i = 0; i < 3; i++) {
+            Thread.sleep(1000);
+            System.out.println("Increment : " + count);
             count++;
         }
     }
 
     public void firstThread() throws InterruptedException {
+        System.out.println("firstThread start");
+//        Thread.sleep(2000);
+
         lock.lock();
         System.out.println("Waiting ....");
         cond.await();
         System.out.println("Woken up!");
         try {
+            System.out.println("firstThread :");
             increment();
         } finally {
+            System.out.println("firstThread unlock");
             lock.unlock();
         }
     }
 
     public void secondThread() throws InterruptedException {
+        System.out.println("secondThread start");
+
         Thread.sleep(1000);
+
         lock.lock();
         System.out.println("Press the return key!");
         new Scanner(System.in).nextLine();
         System.out.println("Got return key!");
         cond.signal();
         try {
+            System.out.println("secondThread :");
             increment();
         } finally {
             //should be written to unlock Thread whenever signal() is called
+            System.out.println("secondThread unlock");
             lock.unlock();
         }
     }
